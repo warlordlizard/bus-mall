@@ -3,9 +3,7 @@
 Product.allProducts = [];
 
 var imageArray = ['img/bag.jpg', 'img/banana.jpg','img/bathroom.jpg', 'img/boots.jpg', 'img/breakfast.jpg', 'img/bubblegum.jpg', 'img/chair.jpg', 'img/cthulhu.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg', 'img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.png', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/usb.gif', 'img/water-can.jpg', 'img/wine-glass.jpg'];
-// var imageOne = getElementById('imageOne');
-// var imageTwo = getElementById('imageTwo');
-// var imageThree = getElementById('imageThree');
+
 
 function Product(name, filepath) {
   this.name = name;
@@ -21,7 +19,10 @@ for (var i = 0; i < 20; i++) {
 };
 
 function addVote() {
-  Product.clicked++;
+  console.log(this.clicked)
+  // var image1 = getElementById('imageOne');
+  // var image2 = getElementById('imageTwo');
+  // var image3 = getElementById('imageThree');
 }
 
 function random(min,max) {
@@ -32,6 +33,19 @@ function renderImages() {
   imageOne.src = Product.allProducts[random(0,20)].filepath;
   imageTwo.src = Product.allProducts[random(0,20)].filepath;
   imageThree.src = Product.allProducts[random(0,20)].filepath;
+
+  if ((imageOne.src === imageTwo.src) || (imageOne.src === imageThree.src)) {
+    //reroll
+    imageOne.src = Product.allProducts[random(0,20)].filepath
+  }
+  if ((imageTwo.src === imageOne.src) || (imageTwo.src === imageThree.src)) {
+    //reroll
+    imageTwo.src = Product.allProducts[random(0,20)].filepath
+  }
+  if ((imageThree.src === imageTwo.src) || (imageThree.src === imageOne.src)) {
+    //reroll
+    imageThree.src = Product.allProducts[random(0,20)].filepath
+  }
 };
 
 // imageOne.addEventListener('click', addVote);
