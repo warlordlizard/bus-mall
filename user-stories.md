@@ -1,0 +1,15 @@
+- As a market research team, we want to find which products are most appealing.
+- As a market research team, we want data to be unbiased by statistics.
+- As a market research team, we want participants to choose between three products.
+- As a market research team, we want to track how many times each product is clicked.
+- As a market research team, we want to track how many times each product is showed.
+- As a developer, I want a webpage that shows three images side by side.
+- As a developer, I want to use a script that records each time an image is clicked.
+- As a developer, I want to design an appealing layout so the research team is happy.
+- As a developer, I want to hide click results from participant until 25 pictures have been clicked.
+- As a developer, I do not want an image to duplicate itself during a round or in the next round.
+- As a participant, I want to be able to choose between 3 products.
+- As a participant, I want each image to be the same size.
+- As a participant, I want the webpage to look good.
+- As a participant, I want the page to be easily maneuverable.
+- As a participant, I do not want to encounter an error.

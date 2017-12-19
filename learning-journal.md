@@ -1,0 +1,2 @@
+Monday:
+  today was an interesting day.  I accidentally called an id in javascript without declaring it.  It was working even though it should not have been.  I forgot to add the document before getElementById.  For the build today it was easy html and css, javascript was harder.  I managed to create my objects using a constructor, get my pictures to render at random, and used if statements to ensure they did not repeat.  I could not figure out haw to register clicks onto the object the picture represented.
