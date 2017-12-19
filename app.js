@@ -11,8 +11,15 @@ var imageArray = ['img/bag.jpg', 'img/banana.jpg','img/bathroom.jpg', 'img/boots
 
 function Product(name, filepath) {
   this.name = name;
-  this.filepath = filepath; 
-  this.clicked = 0;
+  this.filepath = filepath;
+  this.timesClicked = 0;
+  this.prevDisplayed = false;
+  // this.click = function() {
+  //   console.log('click')
+  //   this.timesClicked++;
+  //   this.prevDisplayed = true;
+  //   renderImages();
+  // };
   Product.allProducts.push(this);
 };
 
@@ -23,10 +30,10 @@ for (var i = 0; i < 20; i++) {
 };
 
 function addVote1() {
-  var imageDisplayed =
+  // var imageDisplayed = imageOne.src;
   console.log(imageOne.src);
   renderImages();
-  ++Product.allProducts[1].clicked;
+  // ++Product.allProducts[imageDisplayed.filepath].clicked;
   // return .clicked++;
 
 };
