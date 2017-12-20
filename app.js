@@ -16,12 +16,12 @@ function Product(name, filepath) {
   this.totalClicks = 0;
   this.prevShown = false;
   this.timesShown = 0;
-  this.click = function() {
-    console.log('click')
-    this.timesClicked++;
-    this.prevDisplayed = true;
-    renderImages();
-  };
+  // this.click = function() {
+  //   console.log('click')
+  //   this.timesClicked++;
+  //   this.prevDisplayed = true;
+  //   renderImages();
+  // };
   Product.allProducts.push(this);
 };
 function makeProducts() {
@@ -76,12 +76,15 @@ imageOne.addEventListener('click', addVote1);
 imageTwo.addEventListener('click', addVote2);
 imageThree.addEventListener('click', addVote3);
 
+var resultButton = document.getElementById('showResults');
+
 function addVote1(event) {
     Product.allProducts[imageOneIndex].totalClicks += 1;
     counter();
     renderImages();
     if (totalCounter === 25) {
       //do something
+      resultButton.removeAttribute('hidden');
     }
 };
 function addVote2(event) {
@@ -90,47 +93,66 @@ function addVote2(event) {
   renderImages();
   if (totalCounter === 25) {
     //do something
+    resultButton.removeAttribute('hidden');
   }
 };
 function addVote3(event) {
   Product.allProducts[imageThreeIndex].totalClicks += 1;
   counter();
   renderImages();
+  // productData.push(Product.allProducts[imageThreeIndex].totalClicks);
   if (totalCounter === 25) {
     //do something
+    resultButton.removeAttribute('hidden');
   }
 };
 makeProducts();
 renderImages();
 
 var labels = [];
-var productData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+var productData = [1,3,5,1,3,5,1,3,5,1,3,5,14,10,1,3,5,1,3,5]
+// [Product.allProducts[0].totalClicks,Product.allProducts[1].totalClicks,Product.allProducts[2].totalClicks,Product.allProducts[3].totalClicks,Product.allProducts[4].totalClicks,Product.allProducts[5].totalClicks,Product.allProducts[6].totalClicks,Product.allProducts[7].totalClicks,Product.allProducts[8].totalClicks,Product.allProducts[9].totalClicks,Product.allProducts[10].totalClicks,Product.allProducts[11].totalClicks,Product.allProducts[12].totalClicks,Product.allProducts[13].totalClicks,Product.allProducts[14].totalClicks,Product.allProducts[15].totalClicks,Product.allProducts[16].totalClicks,Product.allProducts[17].totalClicks,Product.allProducts[18].totalClicks,Product.allProducts[19].totalClicks];
 
+//Product.allProducts
 for (var i = 0; i < Product.allProducts.length; i++) {
   labels.push(Product.allProducts[i].name);
 }
-
+// var addclickdata = function() {
+//   for (var i = 0; i < Product.allProducts.length; i++) {
+//     productData.push(Product.allProducts[i].totalClicks);
+//     console.log(Product.allProducts[i].totalClicks);
+//   }
+// };
+// addclickdata();
 var canvas = document.getElementById('chart');
 var ctx = canvas.getContext('2d');
 
-var chart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-    labels: labels,
-    datasets: [{
-      label: 'Votes for products',
-      data: productData,
-      backgroundColor: ['#444', '#888', 'orange', 'blue', 'yellow', 'green', 'purple', 'black', 'pink', 'crimson', '#fe4eda', 'red', 'white', '#b0bf1a','#84de02','#551b8c','#3b444b','#ff9966','#ffe135','#9f8170']
-    }]
-  },
-  options: {
-    layout: {
-            padding: {
-                left: 0,
-                right: 0,
-                top: 100,
-                bottom: 0
-            }
+resultButton.addEventListener('click', handleResultButtonClick);
+
+function handleResultButtonClick(event) {
+  // numResultButtonClicks += 1;
+  var results = document.getElementById('results');
+  results.removeAttribute('hidden');
+
+  var chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Votes for products',
+        data: productData,
+        backgroundColor: ['#444', '#888', 'orange', 'blue', 'yellow', 'green', 'purple', 'black', 'pink', 'crimson', '#fe4eda', 'red', 'white', '#b0bf1a','#84de02','#551b8c','#3b444b','#ff9966','#ffe135','#9f8170']
+      }]
+    },
+    options: {
+      layout: {
+              padding: {
+                  left: 0,
+                  right: 0,
+                  top: 100,
+                  bottom: 0
+              }
+          }
         }
-      }
-})
+  })
+}
