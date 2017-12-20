@@ -152,6 +152,7 @@ function handleResultButtonClick(event) {
     productData.push(Product.allProducts[i].totalClicks);
     console.log(Product.allProducts[i].totalClicks);
   }
+  localStorage.productData = productData;
 
   var chart = new Chart(ctx, {
     type: 'pie',
@@ -183,7 +184,14 @@ function save() {
 function load() {
   if (localStorage.counter) {
     totalCounter = parseInt(localStorage.counter);
+    if (totalCounter > 25) {
+      //do something
+      resultButton.removeAttribute('hidden');
+      var images = document.getElementById('images');
+      images.setAttribute('hidden','');
+    }
   }
+  productData = localStorage.productData.split(',');
 }
 
 load();
