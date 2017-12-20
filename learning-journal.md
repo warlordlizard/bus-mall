@@ -4,3 +4,6 @@ Monday:
 Tuesday:
   I feel a bit closer to solving click issue.  maybe making a handler is the solution.  I displayed a pie chart on my page and used a for loop to make a labels array that i could use inside the chart.  this is likely how I would add the data as well (once i have it), in the meantime I created an array called productData filled with fake data so I could display something.
   -update: almost there.  can't get timesClicked to push to productData.  I tried using for loop and even imputing by hand using Product.allProducts[i].totalClicks where i is 1-20. putting back fake data for now.
+
+Wednesday:
+  got productData working( put inside handler at micheal's advice).  Now data is populating to chart.  added localStorage persistance to totalClicks and totalCounter.  now when you exit page you can come back and finish or if you are finished the images don't appear the button is already there for chart.  super happy with progress.  
