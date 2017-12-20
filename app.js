@@ -16,12 +16,12 @@ function Product(name, filepath) {
   this.totalClicks = 0;
   this.prevShown = false;
   this.timesShown = 0;
-  // this.click = function() {
-  //   console.log('click')
-  //   this.timesClicked++;
-  //   this.prevDisplayed = true;
-  //   renderImages();
-  // };
+  this.click = function() {
+    console.log('click')
+    this.timesClicked++;
+    this.prevDisplayed = true;
+    renderImages();
+  };
   Product.allProducts.push(this);
 };
 function makeProducts() {
@@ -36,57 +36,70 @@ function counter() {
   totalCounter += 1;
 }
 
-function addVote() {
-  var imgPath = document.getElementById('imageOne').src
-  // var imageDisplayed = imageOne.src;
-  console.log('vote1');
-  renderImages();
-  // ++Product.allProducts[imageDisplayed.filepath].clicked;
-  // return .clicked++;
-  if (imgPath.split('bus-mall')[1] === Product.allProducts.filepath) {
-    totalClicks += 1;
-    counter();
-  }
-
+function randomProduct() {
+  return Math.floor(Math.random() * Product.allProducts.length);
 };
-// function addVote2() {
-//   console.log(imageTwo.src);
-//   renderImages();
-//   // Product.clicked += 1;
-//
-// };
-// function addVote3() {
-//   console.log(imageThree.src);
-//   renderImages();
-//   // Product.clicked += 1;
 
-// };
-function random(min,max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-};
+var imageOneIndex = 0;
+var imageTwoIndex = 0;
+var imageThreeIndex = 0;
 
 function renderImages() {
-  imageOne.src = Product.allProducts[random(0,20)].filepath;
-  imageTwo.src = Product.allProducts[random(0,20)].filepath;
-  imageThree.src = Product.allProducts[random(0,20)].filepath;
+  imageOneIndex = randomProduct();
+  imageOne.src = Product.allProducts[imageOneIndex].filepath;
+  Product.allProducts[imageOneIndex].timesShown +=1;
 
-  if ((imageOne.src === imageTwo.src) || (imageOne.src === imageThree.src)) {
+  imageTwoIndex = randomProduct();
+  imageTwo.src = Product.allProducts[imageTwoIndex].filepath;
+  Product.allProducts[imageTwoIndex].timesShown +=1;
+
+  imageThreeIndex = randomProduct();
+  imageThree.src = Product.allProducts[imageThreeIndex].filepath;
+  Product.allProducts[imageThreeIndex].timesShown +=1;
+
+  while ((imageOne.src === imageTwo.src) || (imageOne.src === imageThree.src)) {
     //reroll
-    imageOne.src = Product.allProducts[random(0,20)].filepath;
+    imageOne.src = Product.allProducts[randomProduct()].filepath;
   };
-  if ((imageTwo.src === imageOne.src) || (imageTwo.src === imageThree.src)) {
+  while ((imageTwo.src === imageOne.src) || (imageTwo.src === imageThree.src)) {
     //reroll
-    imageTwo.src = Product.allProducts[random(0,20)].filepath;
+    imageTwo.src = Product.allProducts[randomProduct()].filepath;
   };
-  if ((imageThree.src === imageTwo.src) || (imageThree.src === imageOne.src)) {
+  while ((imageThree.src === imageTwo.src) || (imageThree.src === imageOne.src)) {
     //reroll
-    imageThree.src = Product.allProducts[random(0,20)].filepath;
+    imageThree.src = Product.allProducts[randomProduct()].filepath;
   };
+
 };
 
-imageOne.addEventListener('click', addVote);
-imageTwo.addEventListener('click', addVote);
-imageThree.addEventListener('click', addVote);
+imageOne.addEventListener('click', addVote1);
+imageTwo.addEventListener('click', addVote2);
+imageThree.addEventListener('click', addVote3);
+
+function addVote1(event) {
+    Product.allProducts[imageOneIndex].totalClicks += 1;
+    counter();
+    renderImages();
+    if (totalCounter === 25) {
+      //do something
+    }
+};
+function addVote2(event) {
+  Product.allProducts[imageTwoIndex].totalClicks += 1;
+  counter();
+  renderImages();
+  if (totalCounter === 25) {
+    //do something
+  }
+};
+function addVote3(event) {
+  Product.allProducts[imageThreeIndex].totalClicks += 1;
+  counter();
+  renderImages();
+  if (totalCounter === 25) {
+    //do something
+  }
+};
 makeProducts();
 renderImages();
 
