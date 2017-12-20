@@ -117,12 +117,12 @@ var productData = [1,3,5,1,3,5,1,3,5,1,3,5,14,10,1,3,5,1,3,5]
 for (var i = 0; i < Product.allProducts.length; i++) {
   labels.push(Product.allProducts[i].name);
 }
-// var addclickdata = function() {
-//   for (var i = 0; i < Product.allProducts.length; i++) {
-//     productData.push(Product.allProducts[i].totalClicks);
-//     console.log(Product.allProducts[i].totalClicks);
-//   }
-// };
+  //
+  // for (var i = 0; i < Product.allProducts.length; i++) {
+  //   productData.push(parsInt(Product.allProducts[i].totalClicks));
+  //   console.log(Product.allProducts[i].totalClicks);
+  // }
+//
 // addclickdata();
 var canvas = document.getElementById('chart');
 var ctx = canvas.getContext('2d');
@@ -133,6 +133,10 @@ function handleResultButtonClick(event) {
   // numResultButtonClicks += 1;
   var results = document.getElementById('results');
   results.removeAttribute('hidden');
+
+  var images = document.getElementById('images');
+  images.setAttribute('hidden','');
+
 
   var chart = new Chart(ctx, {
     type: 'pie',
@@ -149,7 +153,7 @@ function handleResultButtonClick(event) {
               padding: {
                   left: 0,
                   right: 0,
-                  top: 100,
+                  top: 20,
                   bottom: 0
               }
           }
