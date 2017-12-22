@@ -7,3 +7,6 @@ Tuesday:
 
 Wednesday:
   got productData working( put inside handler at micheal's advice).  Now data is populating to chart.  added localStorage persistance to totalClicks and totalCounter.  now when you exit page you can come back and finish or if you are finished the images don't appear the button is already there for chart.  super happy with progress.  
+
+Thursday:
+  First day of working on group project.  I feel it went well.  My app idea was picked (text based adventure).  Once our group got together we started brainstorming ideas for a theme and layout.  we settled on star wars as the theme.  the app will have a static header and footer, the background for the body is atm decided on stars, and the text scenarios will be in a box in the center of the page.  we did basic HTML scaffolding, basic css layout, and some JS ideas.   
