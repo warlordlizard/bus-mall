@@ -10,3 +10,6 @@ Wednesday:
 
 Thursday:
   First day of working on group project.  I feel it went well.  My app idea was picked (text based adventure).  Once our group got together we started brainstorming ideas for a theme and layout.  we settled on star wars as the theme.  the app will have a static header and footer, the background for the body is atm decided on stars, and the text scenarios will be in a box in the center of the page.  we did basic HTML scaffolding, basic css layout, and some JS ideas.   
+
+Friday/ weekend:
+  watched 301 projects. very cool.  met with andrii and gene, we did the merge/conflict lab.  brian came by and heard our modified plan, which he said was still good.  task for the weekend is to write 3 scenarios each.
